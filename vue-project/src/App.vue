@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-import IntroQuiz from './components/IntroQuiz.vue'
 </script>
 
 <template>
@@ -9,12 +8,12 @@ import IntroQuiz from './components/IntroQuiz.vue'
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/quiz">Quiz</RouterLink>
       </nav>
     </div>
   </header>
 
   <RouterView />
-  <IntroQuiz />
 </template>
 
 <style scoped></style>
