@@ -4,31 +4,29 @@
     <br /><br />
     <h2>{{ questions[currentQuestion].question }}</h2>
     <ul>
-      <li
+      <!-- <li
         v-for="(option, index) in questions[currentQuestion].options"
         :key="index"
-      >
-        <label>
-          <input
-            type="radio"
-            :name="currentQuestion"
-            :value="option"
-            v-model="selectedOption"
-          />
-          {{ option }}
-        </label>
-      </li>
+        name="radAnswer"
+        value="radAnswer"
+      > -->
+      <label>
+        <input
+          name="my_options"
+          v-for="(option, index) in questions.options"
+          type="radio"
+          :key="index"
+          :id="index"
+          v-model="selectedOption"
+        />
+        {{ questions[currentQuestion].options }}
+      </label>
     </ul>
-    <button @click="checkAnswer">Submit</button>
+    <!-- <button @click="checkAnswer">Submit</button> -->
     <!-- :style... Changes the color so that Correct displays in green and Incorrect in red -->
-    <p
-      v-if="answerMessage"
-      :style="{ color: answerMessage === 'Correct!' ? 'green' : 'red' }"
-    >
-      {{ answerMessage }}
-    </p>
+    <!-- <p v-if="answerMessage" :style="{ color: answerMessage === 'Correct!' ? 'green' : 'red' }">{{ answerMessage }}</p> -->
     <!-- Supposed to render the score after quiz completion, still working on this -->
-    <p v-if="quizCompleted">Your score: {{ score }}</p>
+    <!-- <p v-if="quizCompleted">Your score: {{ score }}</p> -->
   </div>
 </template>
 
@@ -86,32 +84,10 @@ export default {
       answerMessage: "",
     };
   },
+
   methods: {
     checkAnswer() {
-      if (this.currentQuestion >= this.questions.length) {
-        this.currentQuestion = 0;
-        this.selectedOption = ""; // Resets the selected question
-        this.answerMessage = ""; // reset answerMessage
-        this.score = 0; // reset score
-        return;
-      }
-      if (this.selectedOption === this.questions[this.currentQuestion].answer) {
-        /* If the answer is correct, displays the Correct! string */
-        this.setMessage("Correct!");
-        /* If answer is correct, adds a point to user's score */
-        this.score++;
-      } else {
-        this.setMessage("Incorrect.");
-      }
-      this.currentQuestion++;
-    },
-    setMessage(message) {
-      this.answerMessage = message;
-    },
-  },
-  computed: {
-    quizCompleted() {
-      return this.currentQuestion >= this.questions.length;
+      console.log("Tjenare");
     },
   },
 };
