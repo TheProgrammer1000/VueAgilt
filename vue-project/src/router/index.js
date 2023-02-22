@@ -21,7 +21,12 @@ const router = createRouter({
     {
       path: "/quiz",
       name: "quiz",
-      component: IntroQuiz
+      component: IntroQuiz,
+    },
+    {
+      path: "/landing",
+      name: "landingpage",
+      component: LandingPage,
     },
   ],
 });
