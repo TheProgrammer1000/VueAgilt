@@ -10,4 +10,4 @@ the observable universe, how cool is that? 🚀
 To be valid for a VIP pass you must have been a member of our monthly subscription for two years, and some other requirements
 needs to be met as well.
 
-More updates to come 🌌
+<i>More updates to come..</i> 🌌
