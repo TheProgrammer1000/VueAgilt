@@ -5,6 +5,7 @@
   overflow-x: hidden;
   font-family: monospace;
 }
+/* Color variables */
 :root {
   --steel-blue-clr: #5281AD;
   --light-blue-clr: #7EA4C3;
