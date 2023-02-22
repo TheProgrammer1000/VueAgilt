@@ -18,7 +18,7 @@
     </div>
   </div>
 </template>
-
+<!-- Created some cards for planets-->
 <script>
 import { defineComponent } from "vue";
 
