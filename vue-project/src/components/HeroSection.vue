@@ -1,11 +1,3 @@
-<script>
-export default {
-  data() {
-    return { videoSource: "./src/images/hero_video.mp4" };
-  },
-};
-</script>
-
 <template>
   <div class="hero-div">
     <video autoplay muted loop alt="video from space on the earh spinning">
@@ -17,10 +9,25 @@ export default {
       <p>
         Du behöver vara kvalificerad för att köpa en rymdresa, gör våran quiz
       </p>
-      <div class="button">Quiz</div>
+      <div class="button" @click="toQuiz">Quiz</div>
     </div>
   </div>
 </template>
+
+<script>
+import router from "../router/index.js"
+export default {
+  data() {
+    return { videoSource: "./src/images/hero_video.mp4" };
+  },
+  methods: {
+    toQuiz() {
+      // this.$route.push('/quiz');
+      router.push('/quiz')
+    }
+  }
+};
+</script>
 
 <style scoped>
 .overlay {
