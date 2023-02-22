@@ -27,6 +27,7 @@ const router = createRouter({
       path: "/landing",
       name: "landingpage",
       component: LandingPage,
+
     },
   ],
 });

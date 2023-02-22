@@ -17,9 +17,7 @@
       </div>
     </div>
   </div>
-  <div><h1>Mad</h1></div>
 </template>
-<!-- Created some cards for planets-->
 
 <script>
 import { defineComponent } from "vue";
