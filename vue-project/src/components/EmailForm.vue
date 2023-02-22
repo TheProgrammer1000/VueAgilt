@@ -1,31 +1,30 @@
-<script>
-import { required, email } from "vuelidate/lib/validators";
+<template>
+  <form @submit.prevent="submitForm">
+    <input
+      type="email"
+      v-model="email"
+      required
+      placeholder="Enter your email address"
+    />
+    <button type="submit">Subscribe</button>
+  </form>
+</template>
 
-export default {
+<script>
+import { defineComponent } from "vue";
+
+export default defineComponent({
   data() {
     return {
       email: "",
     };
   },
-  validations: {
-    email: {
-      required,
-      email,
-    },
-  },
   methods: {
     submitForm() {
-      // Send form data to server using an HTTP request
+      // Send email and any other data to backend or API endpoint right now
+      // just console logging the user input.
+      console.log("Submitting form with email:", this.email);
     },
   },
-};
+});
 </script>
-
-<template>
-  <form @submit.prevent="submitForm">
-    <label for="email">Email:</label>
-    <input id="email" v-model="email" type="email" required />
-    <span v-if="$v.email.$error">Please enter a valid email address.</span>
-    <button type="submit">Subscribe</button>
-  </form>
-</template>
