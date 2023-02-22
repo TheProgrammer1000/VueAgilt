@@ -5,3 +5,10 @@
   overflow-x: hidden;
   font-family: monospace;
 }
+:root {
+  --steel-blue-clr: #5281AD;
+  --light-blue-clr: #7EA4C3;
+  --grey-clr: #424245;
+  --dark-blue: #0F1B2E;
+  --rich-black: #04070E;
+}
