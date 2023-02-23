@@ -3,8 +3,10 @@
   margin: 0;
   box-sizing: border-box;
   overflow-x: hidden;
+}
+body {
   font-family: monospace;
-
+  font-size: 16px;
 }
 /* Color variables */
 :root {
@@ -14,5 +16,3 @@
   --dark-blue: #0f1b2e;
   --rich-black: #04070e;
 }
-
-
