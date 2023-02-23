@@ -1,6 +1,5 @@
 <template>
-    <IntroQuiz />
-  </template>
-  
-  <style></style>
-  
+  <IntroQuiz />
+</template>
+
+<style></style>

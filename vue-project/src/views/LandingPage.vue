@@ -1,11 +1,14 @@
 <script setup>
-import HeroSection from "../components/HeroSection.vue";
+
+import NavBar from "../components/NavBar.vue";
 import EmailForm from "../components/EmailForm.vue";
+import PlanetCards from "../components/PlanetCards.vue";
 </script>
 
 <template>
+  <NavBar />
   <main>
-    <HeroSection />
+    <PlanetCards />
   </main>
   <footer>
     <EmailForm />

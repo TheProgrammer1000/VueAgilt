@@ -1,7 +1,17 @@
+<script setup>
+import PlanetCards from "../components/PlanetCards.vue";
+</script>
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>Travel Destinations</h1>
   </div>
+  <main>
+    <PlanetCards />
+  </main>
 </template>
 
-<style></style>
+<style>
+.about {
+  text-align: center;
+}
+</style>
