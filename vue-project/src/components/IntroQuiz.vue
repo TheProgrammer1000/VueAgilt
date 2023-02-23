@@ -4,33 +4,40 @@
     <br /><br />
     <h2>{{ questions[currentQuestion].question }}</h2>
     <ul>
-      <!-- <li
+      <li
         v-for="(option, index) in questions[currentQuestion].options"
         :key="index"
         name="radAnswer"
         value="radAnswer"
-      > -->
-      <label>
-        <input
-          name="my_options"
-          v-for="(option, index) in questions.options"
-          type="radio"
-          :key="index"
-          :id="index"
-          v-model="selectedOption"
-        />
-        {{ questions[currentQuestion].options }}
-      </label>
+      >
+        <label>
+          <input
+            :value="option"
+            name="my_options"
+            type="radio"
+            v-model="selectedOption"
+          />
+          {{ option }}
+        </label>
+      </li>
     </ul>
-    <!-- <button @click="checkAnswer">Submit</button> -->
-    <!-- :style... Changes the color so that Correct displays in green and Incorrect in red -->
-    <!-- <p v-if="answerMessage" :style="{ color: answerMessage === 'Correct!' ? 'green' : 'red' }">{{ answerMessage }}</p> -->
-    <!-- Supposed to render the score after quiz completion, still working on this -->
-    <!-- <p v-if="quizCompleted">Your score: {{ score }}</p> -->
+
+    <button @click="checkAnswer">Submit</button>
+    :style... Changes the color so that Correct displays in green and Incorrect
+    in red
+    <p
+      v-if="answerMessage"
+      :style="{ color: answerMessage === 'Correct!' ? 'green' : 'red' }"
+    >
+      {{ answerMessage }}
+    </p>
+    Supposed to render the score after quiz completion, still working on this
+    <p v-if="quizCompleted">Your score: {{ score }}</p>
   </div>
 </template>
 
 <script>
+import router from "../router/index.js";
 export default {
   data() {
     return {
@@ -80,6 +87,7 @@ export default {
       ],
       currentQuestion: 0,
       selectedOption: "",
+      selectedOptions: [],
       score: 0,
       answerMessage: "",
     };
@@ -87,7 +95,26 @@ export default {
 
   methods: {
     checkAnswer() {
-      console.log("Tjenare");
+      this.selectedOptions.push(this.selectedOption);
+      this.selectedOption = "";
+      if (this.questions.length == this.selectedOptions.length) {
+        for (let i = 0; i < this.selectedOptions.length; i++) {
+          if (this.selectedOptions[i] == this.questions[i].answer) {
+            this.score += 1;
+          }
+        }
+        if (parseInt(this.score) == parseInt(this.selectedOptions.length)) {
+          console.log("gratz you got everything right");
+          router.push("/landing");
+        } else {
+          this.currentQuestion = 0;
+          this.selectedOption = "";
+          this.selectedOptions = [];
+          this.score = 0;
+        }
+      } else {
+        this.currentQuestion += 1;
+      }
     },
   },
 };
