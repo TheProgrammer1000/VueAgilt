@@ -3,25 +3,12 @@
     <h2 class="header">Made by</h2>
     <div class="button-container">
       <a
-        href="https://github.com/SimonFritzNguesseu"
+        v-for="user in githubUsers"
+        :key="user.name"
+        :href="user.link"
         class="button"
         target="_blank"
-        >Simon</a
-      >
-      <a
-        href="https://github.com/TheProgrammer1000"
-        class="button"
-        target="_blank"
-        >Dennis</a
-      >
-      <a href="https://github.com/locorickardo" class="button" target="_blank"
-        >Rickard</a
-      >
-      <a href="https://github.com/dejv0ld" class="button" target="_blank"
-        >David</a
-      >
-      <a href="https://github.com/Yavuziths" class="button" target="_blank"
-        >Yavuz</a
+        >{{ user.name }}</a
       >
     </div>
   </div>
@@ -30,8 +17,23 @@
 <script>
 export default {
   name: "Links",
+  data() {
+    return {
+      githubUsers: [
+        { name: "Simon", link: "https://github.com/SimonFritzNguesseu" },
+        { name: "Dennis", link: "https://github.com/TheProgrammer1000" },
+        { name: "Rickard", link: "https://github.com/locorickardo" },
+        { name: "David", link: "https://github.com/dejv0ld" },
+        { name: "Yavuz", link: "https://github.com/Yavuziths" },
+      ],
+    };
+  },
 };
 </script>
+
+<style>
+/* styles omitted for brevity */
+</style>
 
 <style>
 .links {
