@@ -5,7 +5,7 @@ import { RouterLink, RouterView } from "vue-router";
   <!-- here is navbar with bootstrap-->
   <nav class="navbar bg-body-tertiary fixed-top">
     <div class="container-fluid">
-      <RouterLink class="navbar-brand" to="/">Space</RouterLink>
+      <RouterLink class="navbar-brand" to="/">Travel Destinations</RouterLink>
       <button
         class="navbar-toggler"
         type="button"
