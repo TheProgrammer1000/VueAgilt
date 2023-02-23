@@ -31,8 +31,8 @@
     >
       {{ answerMessage }}
     </p>
-    Supposed to render the score after quiz completion, still working on this
-    <p v-if="quizCompleted">Your score: {{ score }}</p>
+    <!-- Supposed to render the score after quiz completion, still working on this -->
+    <!-- <p v-if="quizCompleted">Your score: {{ score }}</p> -->
   </div>
 </template>
 
@@ -87,34 +87,40 @@ export default {
       ],
       currentQuestion: 0,
       selectedOption: "",
-      selectedOptions: [],
       score: 0,
       answerMessage: "",
+      matchCount: 0,
     };
   },
 
   methods: {
     checkAnswer() {
-      this.selectedOptions.push(this.selectedOption);
-      this.selectedOption = "";
-      if (this.questions.length == this.selectedOptions.length) {
-        for (let i = 0; i < this.selectedOptions.length; i++) {
-          if (this.selectedOptions[i] == this.questions[i].answer) {
-            this.score += 1;
-          }
-        }
-        if (parseInt(this.score) == parseInt(this.selectedOptions.length)) {
-          console.log("gratz you got everything right");
-          router.push("/landing");
-        } else {
-          this.currentQuestion = 0;
-          this.selectedOption = "";
-          this.selectedOptions = [];
-          this.score = 0;
-        }
+      console.log("this.score: ", this.score);
+      console.log("this.currentQuestion: ", this.currentQuestion);
+      if (this.score === this.questions.length) {
+        router.push("/landing");
+      } else if (
+        Number(this.score) !== this.questions.length &&
+        this.currentQuestion === 4
+      ) {
+        this.score = 0;
+        this.matchCount += 1;
+      }
+
+      if (this.questions[this.currentQuestion].answer === this.selectedOption) {
+        this.answerMessage = "Correct!";
+        this.score += 1;
       } else {
+        this.answerMessage = "Incorrect!";
+      }
+      // if (this.matches.matchCount === 0) {
+      if (this.currentQuestion === 4) {
+        this.currentQuestion = 0;
+      } else {
+        this.selectedOption = "";
         this.currentQuestion += 1;
       }
+      // }
     },
   },
 };
