@@ -21,7 +21,15 @@ const router = createRouter({
     {
       path: "/quiz",
       name: "quiz",
-      component: IntroQuiz
+      component: IntroQuiz,
+    },
+    {
+      path: "/landing",
+      name: "landing",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../views/LandingPage.vue"),
     },
   ],
 });
