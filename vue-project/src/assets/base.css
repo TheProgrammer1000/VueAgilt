@@ -3,9 +3,11 @@
   margin: 0;
   box-sizing: border-box;
   overflow-x: hidden;
-  font-family: monospace;
 }
-
+body {
+  font-family: monospace;
+  font-size: 16px;
+}
 /* Color variables */
 :root {
   --steel-blue-clr: #5281ad;
