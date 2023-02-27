@@ -21,23 +21,30 @@
         </label>
       </li>
     </ul>
-
+    <button
+      v-if="!fiftyFiftyUsed && !currentQuestion.fiftyFiftyUsed"
+      @click="fiftyFifty()"
+    >
+      50/50
+    </button>
     <button @click="checkAnswer">Submit</button>
     <!--  :style... Changes the color so that Correct displays in green and Incorrect
-    in red -->
+      in red -->
+    <div v-if="timerVisible">Time remaining: {{ time }}</div>
     <p
       v-if="answerMessage"
       :style="{ color: answerMessage === 'Correct!' ? 'green' : 'red' }"
     >
       {{ answerMessage }}
     </p>
-    <!-- Supposed to render the score after quiz completion, still working on this -->
+    <!-- Supposed to render the score after quiz completion, still working on this //done-->
     <p v-if="quizCompleted">Your score: {{ score }}</p>
   </div>
 </template>
 
 <script>
 import router from "../router/index.js";
+
 export default {
   data() {
     return {
@@ -88,21 +95,34 @@ export default {
       currentQuestion: 0,
       selectedOption: "",
       selectedOptions: [],
+      filteredOptions: [],
       score: 0,
-      answerMessage: "",
+      fiftyFiftyUsed: false,
+      timerVisible: true,
+      time: 15,
+      timerId: null,
     };
+  },
+
+  created() {
+    this.timeRemaining = this.time;
   },
 
   methods: {
     checkAnswer() {
+      if (this.timerRunning) {
+        clearInterval(this.timerId);
+      }
       this.selectedOptions.push(this.selectedOption);
       this.selectedOption = "";
+
       if (this.questions.length == this.selectedOptions.length) {
         for (let i = 0; i < this.selectedOptions.length; i++) {
           if (this.selectedOptions[i] == this.questions[i].answer) {
             this.score += 1;
           }
         }
+
         if (parseInt(this.score) == parseInt(this.selectedOptions.length)) {
           console.log("gratz you got everything right");
           router.push("/landing");
@@ -111,11 +131,59 @@ export default {
           this.selectedOption = "";
           this.selectedOptions = [];
           this.score = 0;
+          this.fiftyFiftyUsed = false;
+          this.time = 15;
+          this.timerVisible = true;
+          this.timerRunning = false;
         }
       } else {
         this.currentQuestion += 1;
+        this.filteredOptions = this.questions[this.currentQuestion].options;
+        if (this.timerVisible) {
+          this.startTimer();
+        }
       }
     },
+
+    fiftyFifty() {
+      if (!this.fiftyFiftyUsed) {
+        const question = this.questions[this.currentQuestion];
+        const correctAnswer = question.answer;
+        const incorrectAnswers = question.options.filter(
+          (option) => option !== correctAnswer
+        );
+        const randomIndex = Math.floor(Math.random() * incorrectAnswers.length);
+        const incorrectAnswerToRemove = incorrectAnswers[randomIndex];
+        question.options = question.options.filter(
+          (option) =>
+            option === correctAnswer || option === incorrectAnswerToRemove
+        );
+        this.fiftyFiftyUsed = true;
+        //  Markerar att 50/50 knappen har blivit använd
+        question.fiftyFiftyUsed = true;
+      }
+    },
+
+    startTimer() {
+      this.timerRunning = true;
+      this.time = 15; // reset timer value
+      this.timerId = setInterval(() => {
+        if (this.time > 0) {
+          this.time--;
+        } else {
+          clearInterval(this.timerId);
+          this.timerRunning = false;
+          this.checkAnswer();
+        }
+      }, 1000);
+    },
+
+    isQuizFinished() {
+      return this.questions.length == this.selectedOptions.length;
+    },
+  },
+  mounted() {
+    this.startTimer();
   },
 };
 </script>
