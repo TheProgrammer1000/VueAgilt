@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="quiz-div">
     <h1>Welcome to the intro quiz</h1>
     <br /><br />
     <h2>{{ questions[currentQuestion].question }}</h2>
@@ -23,15 +23,15 @@
     </ul>
 
     <button @click="checkAnswer">Submit</button>
-    :style... Changes the color so that Correct displays in green and Incorrect
-    in red
+    <!--  :style... Changes the color so that Correct displays in green and Incorrect
+    in red -->
     <p
       v-if="answerMessage"
       :style="{ color: answerMessage === 'Correct!' ? 'green' : 'red' }"
     >
       {{ answerMessage }}
     </p>
-    Supposed to render the score after quiz completion, still working on this
+    <!-- Supposed to render the score after quiz completion, still working on this -->
     <p v-if="quizCompleted">Your score: {{ score }}</p>
   </div>
 </template>
@@ -119,3 +119,70 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.quiz-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  color: white;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(../images/quiz_background.webp);
+}
+
+button {
+  color: white;
+  border: 1px solid white;
+  box-shadow: 0 0 10px white, 0 0 20px white;
+  background-color: transparent;
+  margin-left: 20px;
+  border-radius: 8px;
+  padding: 12px 24px;
+  text-align: center;
+}
+
+button:hover {
+  box-shadow: 0 0 10px #5281ad, 0 0 20px #5281ad;
+  border: 1px solid #5281ad;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+ul {
+  margin-bottom: 20px;
+}
+
+li:hover {
+  color: var(--steel-blue-clr);
+}
+li {
+  margin: 0 auto;
+}
+
+input[type="radio"] {
+  box-sizing: border-box;
+  appearance: none;
+  background: white;
+  border: 2px solid white;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+input[type="radio"]:checked {
+  background: var(--steel-blue-clr);
+}
+</style>
