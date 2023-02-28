@@ -70,9 +70,6 @@ export default {
       this.$emit("add-to-cart", product);
     },
   },
-  created() {
-    console.log("product: ", this.product.image);
-  },
 };
 </script>
 

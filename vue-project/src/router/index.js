@@ -35,6 +35,14 @@ const router = createRouter({
       path: "/banned",
       name: "banned",
       component: () => import("../views/BannedPage.vue"),
+     },
+     {
+      path: "/productpage",
+      name: "productpage",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../views/ProductView.vue"),
     },
   ],
 });

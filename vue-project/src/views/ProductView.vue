@@ -27,8 +27,5 @@ export default {
       },
     };
   },
-  created() {
-    console.log("product.image: ", this.product.image);
-  },
 };
 </script>
