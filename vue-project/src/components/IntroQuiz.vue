@@ -59,6 +59,7 @@
 
 <script>
 import router from "../router/index.js";
+import axios from "axios";
 
 export default {
   data() {
@@ -124,9 +125,6 @@ export default {
 
   created() {
     this.timeRemaining = this.time;
-    localStorage.setItem("banned", false); // Ta bort denna sedan.
-
-    this.banned = JSON.parse(localStorage.getItem("banned"));
   },
 
   methods: {
@@ -209,6 +207,13 @@ export default {
   mounted() {
     this.startTimer();
   },
+  created() {
+    // this.banned = JSON.parse(localStorage.getItem("banned"));
+    if (JSON.parse(localStorage.getItem("banned") !== null)) {
+      this.banned = JSON.parse(localStorage.getItem("banned"));
+    }
+  },
+  props: ["socketInstance"],
 
   watch: {
     tries(newValue) {
@@ -216,7 +221,9 @@ export default {
         this.errorDisplay = true;
       } else if (newValue === 2) {
         if (this.questions.length !== this.selectedOptions.length) {
-          console.log("banned");
+          // console.log("banned");
+          // JSON.parse(localStorage.setItem("banned"))
+          // socketInstance.emit("banned", "banned");
           router.push("banned");
         }
       }

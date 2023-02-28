@@ -28,8 +28,6 @@ export default {
   methods: {},
 
   created() {
-    this.$store.commit("bannedStarted");
-    localStorage.setItem("timer", 0);
     localStorage.setItem("banned", true);
   },
 };
