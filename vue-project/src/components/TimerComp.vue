@@ -4,12 +4,17 @@
 
 <script>
 import router from "../router/index.js";
+// import TimerComponent from "./components/TimerComp.vue";
 
 export default {
   data() {
     return {
       timer: 0,
     };
+  },
+
+  components: {
+    // TimerComponent,
   },
   methods: {
     myTimer() {
@@ -20,11 +25,7 @@ export default {
 
       if (timeInMilliseconds >= 15) {
         this.$router.go("/home");
-        // router.push({
-        //   name: "home",
-        // });
 
-        console.log("awdawdaw");
         // this.timer = "";
         // clearInterval(this.stopTimer);
       } else {

@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import TimerComponent from "../components/TimerComp.vue";
 import router from "../router/index.js";
 import axios from "axios";
 
@@ -140,6 +141,9 @@ export default {
   created() {
     this.timeRemaining = this.time;
   },
+
+  components: {},
+
   mounted() {},
 
   methods: {
