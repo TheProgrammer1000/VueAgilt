@@ -54,12 +54,26 @@
       frameborder="0"
       id="hero-video"
     ></iframe>
+
+    {{ this.bannedTime }}
   </div>
 </template>
 
 <script>
 import router from "../router/index.js";
 import axios from "axios";
+
+console.log(localStorage.getItem("bannedTime"));
+
+let start = new Date();
+
+let timeInMilliseconds =
+  (start.getTime() - Number(localStorage.getItem("bannedTime"))) / 1000;
+
+console.log("timeInMilliseconds: ", timeInMilliseconds);
+if (timeInMilliseconds >= 15) {
+  localStorage.setItem("banned", false);
+}
 
 export default {
   data() {
@@ -126,6 +140,7 @@ export default {
   created() {
     this.timeRemaining = this.time;
   },
+  mounted() {},
 
   methods: {
     checkAnswer() {
@@ -213,7 +228,6 @@ export default {
       this.banned = JSON.parse(localStorage.getItem("banned"));
     }
   },
-  props: ["socketInstance"],
 
   watch: {
     tries(newValue) {
@@ -222,8 +236,7 @@ export default {
       } else if (newValue === 2) {
         if (this.questions.length !== this.selectedOptions.length) {
           // console.log("banned");
-          // JSON.parse(localStorage.setItem("banned"))
-          // socketInstance.emit("banned", "banned");
+          // JSON.parse(localStorage.setItem("banned"));
           router.push("banned");
         }
       }

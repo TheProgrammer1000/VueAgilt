@@ -21,6 +21,20 @@
 </template>
 
 <script>
+import router from "../router/index.js";
+
+console.log(localStorage.getItem("bannedTime"));
+
+let start = new Date();
+
+let timeInMilliseconds =
+  (start.getTime() - Number(localStorage.getItem("bannedTime"))) / 1000;
+
+console.log("timeInMilliseconds: ", timeInMilliseconds);
+if (timeInMilliseconds >= 15) {
+  localStorage.setItem("banned", false);
+}
+
 export default {
   data() {
     return { videoSource: "./src/images/hero_video.mp4" };
@@ -29,6 +43,15 @@ export default {
 
   created() {
     localStorage.setItem("banned", true);
+    let start = new Date();
+
+    localStorage.setItem("bannedTime", start.getTime());
+    console.log(
+      'localStorage.getItem("bannedTime")',
+      localStorage.getItem("bannedTime")
+    );
+
+    router.push("quiz");
   },
 };
 </script>
