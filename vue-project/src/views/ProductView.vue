@@ -18,7 +18,7 @@ export default {
         name: "Product Name",
         description: "Product Description",
         price: "$10.00",
-        image: "src/assets/PlanetPictures/Moon.jpeg",
+        image: "../assets/PlanetPictures/Moon.jpeg",
         options: [
           { id: 1, name: "Option 1", price: "$10.00" },
           { id: 2, name: "Option 2", price: "$15.00" },

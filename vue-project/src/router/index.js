@@ -32,6 +32,11 @@ const router = createRouter({
       component: () => import("../views/LandingPage.vue"),
     },
     {
+      path: "/banned",
+      name: "banned",
+      component: () => import("../views/BannedPage.vue"),
+     },
+     {
       path: "/productpage",
       name: "productpage",
       // route level code-splitting

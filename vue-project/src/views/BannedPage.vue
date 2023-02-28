@@ -1,31 +1,57 @@
 <template>
-  <div class="hero-div">
-    <video autoplay muted loop alt="video from space on the earh spinning">
-      <source :src="videoSource" type="video/mp4" />
-    </video>
-    <div class="overlay"></div>
-    <div class="hero-content">
-      <h1>SpaceX Rymdresor</h1>
-      <p>
-        Du behöver vara kvalificerad för att köpa en rymdresa, gör våran quiz
-      </p>
-      <div class="button" @click="toQuiz">Quiz</div>
-    </div>
-  </div>
+  <h2
+    style="
+      position: absolute;
+      margin-left: 23vw;
+      margin-top: 10vh;
+      font-size: 3rem;
+    "
+  >
+    Banned! Försök igen om 2 timmar!
+  </h2>
+  <iframe
+    src="https://vlipsy.com/embed/V1FeavJI?loop=1"
+    width="1050"
+    height="500"
+    frameborder="0"
+    id="hero-video"
+  ></iframe>
+
+  <!-- </video> -->
 </template>
 
 <script>
 import router from "../router/index.js";
+
+console.log(localStorage.getItem("bannedTime"));
+
+let start = new Date();
+
+let timeInMilliseconds =
+  (start.getTime() - Number(localStorage.getItem("bannedTime"))) / 1000;
+
+console.log("timeInMilliseconds: ", timeInMilliseconds);
+if (timeInMilliseconds >= 15) {
+  localStorage.setItem("banned", false);
+}
+
 export default {
   data() {
     return { videoSource: "./src/images/hero_video.mp4" };
   },
-  methods: {
-    toQuiz() {
-      router.push({
-        name: "quiz",
-      });
-    },
+  methods: {},
+
+  created() {
+    localStorage.setItem("banned", true);
+    let start = new Date();
+
+    localStorage.setItem("bannedTime", start.getTime());
+    console.log(
+      'localStorage.getItem("bannedTime")',
+      localStorage.getItem("bannedTime")
+    );
+
+    router.push("quiz");
   },
 };
 </script>
@@ -50,6 +76,11 @@ export default {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+#hero-video {
+  margin-left: 15%;
+  margin-top: 10%;
 }
 
 h1 {

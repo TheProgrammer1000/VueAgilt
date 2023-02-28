@@ -1,49 +1,80 @@
 <template>
-  <div class="quiz-div">
-    <h1>Welcome to the intro quiz</h1>
-    <br /><br />
-    <h2>{{ questions[currentQuestion].question }}</h2>
-    <ul>
-      <li
-        v-for="(option, index) in questions[currentQuestion].options"
-        :key="index"
-        name="radAnswer"
-        value="radAnswer"
+  <div v-if="this.banned === false">
+    <div class="quiz-div">
+      <h1>Welcome to the intro quiz</h1>
+      <br /><br />
+      <h2>{{ questions[currentQuestion].question }}</h2>
+      <br /><br />
+      <h3 v-if="errorDisplay">Jalla! Sista Försöket!</h3>
+      <br />
+      <ul>
+        <li
+          v-for="(option, index) in questions[currentQuestion].options"
+          :key="index"
+          name="radAnswer"
+          value="radAnswer"
+        >
+          <label>
+            <input
+              :value="option"
+              name="my_options"
+              type="radio"
+              v-model="selectedOption"
+            />
+            {{ option }}
+          </label>
+        </li>
+      </ul>
+      <button
+        v-if="!fiftyFiftyUsed && !currentQuestion.fiftyFiftyUsed"
+        @click="fiftyFifty()"
       >
-        <label>
-          <input
-            :value="option"
-            name="my_options"
-            type="radio"
-            v-model="selectedOption"
-          />
-          {{ option }}
-        </label>
-      </li>
-    </ul>
-    <button
-      v-if="!fiftyFiftyUsed && !currentQuestion.fiftyFiftyUsed"
-      @click="fiftyFifty()"
-    >
-      50/50
-    </button>
-    <button @click="checkAnswer">Submit</button>
-    <!--  :style... Changes the color so that Correct displays in green and Incorrect
+        50/50
+      </button>
+      <button @click="checkAnswer">Submit</button>
+      <!--  :style... Changes the color so that Correct displays in green and Incorrect
       in red -->
-    <div v-if="timerVisible">Time remaining: {{ time }}</div>
-    <p
-      v-if="answerMessage"
-      :style="{ color: answerMessage === 'Correct!' ? 'green' : 'red' }"
-    >
-      {{ answerMessage }}
-    </p>
-    <!-- Supposed to render the score after quiz completion, still working on this //done-->
-    <p v-if="quizCompleted">Your score: {{ score }}</p>
+      <div v-if="timerVisible">Time remaining: {{ time }}</div>
+      <p
+        v-if="answerMessage"
+        :style="{ color: answerMessage === 'Correct!' ? 'green' : 'red' }"
+      >
+        {{ answerMessage }}
+      </p>
+      <!-- Supposed to render the score after quiz completion, still working on this //done-->
+      <p v-if="quizCompleted">Your score: {{ score }}</p>
+    </div>
+  </div>
+  <div v-else style="margin-top: 20vh">
+    <h1>INTE SÅ LÅNGT HÄR, FORTFARANDE BANNAD</h1>
+    <iframe
+      src="https://vlipsy.com/embed/V1FeavJI?loop=1"
+      width="1050"
+      height="500"
+      frameborder="0"
+      id="hero-video"
+    ></iframe>
+
+    {{ this.bannedTime }}
   </div>
 </template>
 
 <script>
+import TimerComponent from "../components/TimerComp.vue";
 import router from "../router/index.js";
+import axios from "axios";
+
+console.log(localStorage.getItem("bannedTime"));
+
+let start = new Date();
+
+let timeInMilliseconds =
+  (start.getTime() - Number(localStorage.getItem("bannedTime"))) / 1000;
+
+console.log("timeInMilliseconds: ", timeInMilliseconds);
+if (timeInMilliseconds >= 15) {
+  localStorage.setItem("banned", false);
+}
 
 export default {
   data() {
@@ -101,6 +132,9 @@ export default {
       timerVisible: true,
       time: 15,
       timerId: null,
+      tries: 0,
+      errorDisplay: false,
+      banned: false,
     };
   },
 
@@ -108,11 +142,16 @@ export default {
     this.timeRemaining = this.time;
   },
 
+  components: {},
+
+  mounted() {},
+
   methods: {
     checkAnswer() {
       if (this.timerRunning) {
         clearInterval(this.timerId);
       }
+
       this.selectedOptions.push(this.selectedOption);
       this.selectedOption = "";
 
@@ -135,6 +174,8 @@ export default {
           this.time = 15;
           this.timerVisible = true;
           this.timerRunning = false;
+          this.tries += 1;
+          this.errorDisplay = true;
         }
       } else {
         this.currentQuestion += 1;
@@ -185,6 +226,26 @@ export default {
   mounted() {
     this.startTimer();
   },
+  created() {
+    // this.banned = JSON.parse(localStorage.getItem("banned"));
+    if (JSON.parse(localStorage.getItem("banned") !== null)) {
+      this.banned = JSON.parse(localStorage.getItem("banned"));
+    }
+  },
+
+  watch: {
+    tries(newValue) {
+      if (newValue === 1) {
+        this.errorDisplay = true;
+      } else if (newValue === 2) {
+        if (this.questions.length !== this.selectedOptions.length) {
+          // console.log("banned");
+          // JSON.parse(localStorage.setItem("banned"));
+          router.push("banned");
+        }
+      }
+    },
+  },
 };
 </script>
 
@@ -228,6 +289,11 @@ h2 {
   margin-bottom: 20px;
   text-align: center;
 }
+
+#hero-video {
+  margin-left: 15%;
+}
+
 ul {
   margin-bottom: 20px;
 }
