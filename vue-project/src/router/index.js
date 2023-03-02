@@ -32,6 +32,7 @@ const router = createRouter({
       component: () => import("../views/LandingPage.vue"),
     },
     {
+<<<<<<< HEAD
       path: "/banned",
       name: "banned",
       component: () => import("../views/BannedPage.vue"),
@@ -39,10 +40,14 @@ const router = createRouter({
      {
       path: "/productpage",
       name: "productpage",
+=======
+      path: "/ticketpage",
+      name: "ticketpage",
+>>>>>>> simon_branch
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/ProductView.vue"),
+      component: () => import("../views/TicketView.vue"),
     },
   ],
 });
