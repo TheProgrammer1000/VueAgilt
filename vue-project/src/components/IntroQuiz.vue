@@ -25,12 +25,10 @@
           </label>
         </li>
       </ul>
-      <button
-        v-if="!fiftyFiftyUsed && !currentQuestion.fiftyFiftyUsed"
-        @click="fiftyFifty()"
-      >
-        50/50
+      <button v-if="!callRichardUsed" @click="callRichard()">
+        Call Richard
       </button>
+      <button v-if="!fiftyFiftyUsed" @click="fiftyFifty()">50/50</button>
       <button @click="checkAnswer">Submit</button>
       <!--  :style... Changes the color so that Correct displays in green and Incorrect
       in red -->
@@ -137,6 +135,7 @@ export default {
       banned: false,
       quizCompleted: false,
       answerMessage: "",
+      callRichardUsed: false,
     };
   },
 
@@ -180,6 +179,7 @@ export default {
           this.timerRunning = false;
           this.tries += 1;
           this.errorDisplay = true;
+          this.callRichardUsed = false;
         }
       } else {
         this.currentQuestion += 1;
@@ -222,7 +222,15 @@ export default {
         }
       }, 1000);
     },
-
+    callRichard() {
+      if (!this.callRichardUsed) {
+        var callUrl =
+          "https://teams.microsoft.com/l/call/0/0?users=richard.carlsson@iths.se";
+        window.open(callUrl, "_blank").focus();
+        this.time = this.time + 30;
+        this.callRichardUsed = true;
+      }
+    },
     isQuizFinished() {
       return this.questions.length == this.selectedOptions.length;
     },
