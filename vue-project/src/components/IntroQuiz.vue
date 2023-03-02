@@ -135,11 +135,15 @@ export default {
       tries: 0,
       errorDisplay: false,
       banned: false,
+      quizCompleted: false,
+      answerMessage: "",
     };
   },
 
   created() {
     this.timeRemaining = this.time;
+    this.quizCompleted = false;
+    this.answerMessage = "";
   },
 
   components: {},
