@@ -1,22 +1,22 @@
 <template>
-  <div class="card-container">
-    <div v-for="(card, index) in cards" :key="index" class="card">
-      <img :src="card.imageUrl" :alt="card.title" class="card-image" />
-      <div class="card-content">
-        <h2 class="card-title">{{ card.title }}</h2>
-        <p class="card-text">{{ card.description }}</p>
-        <div class="card-buttons">
-          <a :href="card.buttonLink1" class="card-button">{{
-            card.buttonText1
-          }}</a>
-          <div class="card-button-spacer"></div>
-          <a :href="card.buttonLink2" class="card-button">{{
-            card.buttonText2
-          }}</a>
+    <div class="card-container">
+      <div v-for="(card, index) in cards" :key="index" class="card">
+        <img :src="card.imageUrl" :alt="card.title" class="card-image" />
+        <div class="card-content">
+          <h2 class="card-title">{{ card.title }}</h2>
+          <p class="card-text">{{ card.description }}</p>
+          <div class="card-buttons">
+            <a :href="card.buttonLink1" class="card-button">{{
+              card.buttonText1
+            }}</a>
+            <div class="card-button-spacer"></div>
+            <a :href="card.buttonLink2" class="card-button">{{
+              card.buttonText2
+            }}</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -31,7 +31,7 @@ export default defineComponent({
           description:
             "The fourth planet from the Sun and the second-smallest planet in the Solar System.",
           imageUrl: "src/assets/PlanetPictures/Mars.jpeg",
-          buttonLink1: "https://en.wikipedia.org/wiki/Mars",
+          buttonLink1: "MarsPage",
           buttonText1: "More info",
           buttonLink2: "https://www.example.com/mars-tickets",
           buttonText2: "Book Tickets",
@@ -41,17 +41,17 @@ export default defineComponent({
           description:
             "The only natural satellite of Earth and the fifth largest moon in the Solar System.",
           imageUrl: "src/assets/PlanetPictures/Moon.jpeg",
-          buttonLink1: "https://en.wikipedia.org/wiki/Moon",
+          buttonLink1: "MoonPage",
           buttonText1: "More info",
           buttonLink2: "https://www.example.com/moon-tickets",
           buttonText2: "Book Tickets",
         },
         {
-          title: "Kepler-442b",
+          title: "Kepler-22b",
           description:
             "A confirmed exoplanet about 1,206 light-years away from Earth in the constellation Lyra.",
           imageUrl: "src/assets/PlanetPictures/Kepler-442b.jpeg",
-          buttonLink1: "https://en.wikipedia.org/wiki/Kepler-442b",
+          buttonLink1: "KeplerPage",
           buttonText1: "More info",
           buttonLink2: "https://www.example.com/kepler-442b-tickets",
           buttonText2: "Book Tickets",
