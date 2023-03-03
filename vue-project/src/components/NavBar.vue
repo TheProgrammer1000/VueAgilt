@@ -47,3 +47,10 @@ import { RouterLink, RouterView } from "vue-router";
   </nav>
   <RouterView />
 </template>
+
+
+<style scoped>
+nav {
+  background-color: white;
+}
+</style>
