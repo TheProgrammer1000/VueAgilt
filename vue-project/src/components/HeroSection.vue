@@ -5,9 +5,9 @@
     </video>
     <div class="overlay"></div>
     <div class="hero-content">
-      <h1>SpaceX Rymdresor</h1>
+      <h1>SpaceX Spacetravel</h1>
       <p>
-        Du behöver vara kvalificerad för att köpa en rymdresa, gör våran quiz
+        Finish our quiz to qualify for an interstellar journey.
       </p>
       <div class="button" @click="toQuiz">Quiz</div>
     </div>
@@ -69,6 +69,7 @@ p {
   box-shadow: 0 0 10px white, 0 0 20px white;
   border-radius: 8px;
   margin: 20px;
+  background-color: transparent;
 }
 
 .button:hover {

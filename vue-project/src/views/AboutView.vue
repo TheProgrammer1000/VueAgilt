@@ -1,7 +1,15 @@
-<script setup></script>
+<script setup>
+import NavBar from "../components/NavBar.vue";
+import AboutUsPage from "../components/AboutUsPage.vue";
+import ContactForm from "../components/ContactForm.vue";
+</script>
+
 <template>
   <main>
-    At x we strive to build a future for mankind where the possibility to see
+    <NavBar/>
+    <AboutUsPage/>
+    <ContactForm/>
+<!--     At x we strive to build a future for mankind where the possibility to see
     life outside of earth is a reality. We’ve all been there as kids growing up,
     looking up in the sky towards the stars, wondering what might be out there.
     But it’s always been a fantasy rather than a reality. Words like alien life,
@@ -27,6 +35,6 @@
     universe with your own eyes? Our VIP pass gives you access to this! It’s
     time for humanity to take the “next step” in evolving. Humankind has been
     stuck on planet earth far too long. We are ready to enter the final frontier
-    of humanity. Question is, are you? Space.. The final frontier.
+    of humanity. Question is, are you? Space.. The final frontier. -->
   </main>
 </template>
