@@ -1,62 +1,64 @@
 <template>
-  <div class="product-card">
-    <div class="product-info">
-      <h2>{{ product.name }}</h2>
-      <p>{{ product.description }}</p>
-      <p class="price">{{ product.price }}</p>
-    </div>
-    <div class="product-options">
-      <div class="option">
-        <label for="space">Space class</label>
-        <select id="space" v-model="selectedOption">
-          <option
-            v-for="option in product.options"
-            :key="option.id"
-            :value="option.price"
-          >
-            {{ option.name }} $10000
-          </option>
-        </select>
+  <div class="container">
+    <div class="product-card">
+      <h1>Tickets for space</h1>
+      <div class="product-info">
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <p class="price">{{ product.price }}</p>
       </div>
-      <div class="option">
-        <label for="space-plus">Space+ class</label>
-        <select id="space-plus" v-model="selectedOption">
-          <option
-            v-for="option in product.options"
-            :key="option.id"
-            :value="option.price + 10"
-          >
-            {{ option.name }} $20000
-          </option>
-        </select>
-      </div>
-      <div class="option">
-        <label for="lightspeed">Lightspeed class</label>
-        <select id="lightspeed" v-model="selectedOption">
-          <option
-            v-for="option in product.options"
-            :key="option.id"
-            :value="option.price + 20"
-          >
-            {{ option.name }} $30000
-          </option>
-        </select>
-      </div>
-      <div class="option">
-        <label for="seated-together">Seated together</label>
-        <input type="checkbox" id="seated-together" v-model="seatedTogether" />
-      </div>
-      <div class="option">
-        <label for="quantity">Quantity</label>
-        <div class="quantity-controls">
-          <button @click="decrement">-</button>
-          <span>{{ quantity }}</span>
-          <button @click="increment">+</button>
+      <div class="product-options">
+        <div class="option">
+          <label for="space">Space class</label>
+          <select id="space" v-model="selectedOption">
+            <option
+              v-for="option in product.options"
+              :key="option.id"
+              :value="option.price"
+              :disabled="option.space"
+            >
+              {{ option.package }}
+              {{ option.name }}
+              {{ option.space }}
+              {{ option.currency }}
+              {{ option.price }}
+            </option>
+          </select>
+        </div>
+        <div class="option">
+          <label for="seated-together">Seated together</label>
+          <input
+            type="checkbox"
+            id="seated-together"
+            v-model="seatedTogether"
+          />
+        </div>
+        <div class="option">
+          <label for="quantity">Quantity</label>
+          <div class="quantity-controls">
+            <button @click="decrement">-</button>
+            <span>{{ quantity }}</span>
+            <button @click="increment">+</button>
+          </div>
+        </div>
+        <div class="option">
+          <button @click="addToCart">Add to Cart</button>
         </div>
       </div>
-      <div class="option">
-        <button @click="addToCart">Add to Cart</button>
-      </div>
+      <p>Total price: ${{ totalPrice }}</p>
+    </div>
+    <div class="cart-div">
+      <h2>Cart</h2>
+      <ul>
+        <li v-for="(item, index) in cartItems" :key="index">
+          {{ item.name }} x{{ item.quantity }} - ${{ item.price }}
+        </li>
+      </ul>
+      <p id="cart-total">Total Price: ${{ cartTotal }}</p>
+      <button class="pay-button">Pay ${{ cartTotal }}</button>
+    </div>
+    <div class="order-confirmation">
+      <h2>Order Confirmation??</h2>
     </div>
   </div>
 </template>
@@ -72,20 +74,30 @@ export default {
   data() {
     return {
       selectedOption: 0,
-      seatedTogether: false,
       quantity: 1,
+      cartItems: [], // add cartItems array to store products
     };
+  },
+  computed: {
+    cartTotal() {
+      return this.cartItems.reduce((total, item) => total + item.price, 0);
+    },
+    totalPrice() {
+      return this.selectedOption * this.quantity;
+    },
   },
   methods: {
     addToCart() {
+      const selectedOption = this.product.options.find(
+        (option) => option.price === this.selectedOption
+      );
       const product = {
-        name: this.product.name,
-        price: this.selectedOption,
+        name: selectedOption.name,
+        price: this.totalPrice,
         seatedTogether: this.seatedTogether,
         quantity: this.quantity,
       };
-      // emit an event to the parent component to add the product to the cart
-      this.$emit("add-to-cart", product);
+      this.cartItems.push(product); // add product to cartItems array
     },
     increment() {
       this.quantity++;
@@ -100,13 +112,80 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+.cart-div {
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  width: 410px;
+  height: 519px;
+  box-shadow: 0 0 2rem -0.5rem white;
+  padding: 15px;
+  margin: 60px 10px 40px 10px;
+}
+
+.order-confirmation {
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  width: 410px;
+  height: 518px;
+  box-shadow: 0 0 2rem -0.5rem white;
+  padding: 15px;
+  margin: 70px 10px 40px 10px;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  color: white;
+}
+
+li {
+  list-style: none;
+}
+
+h2 {
+  color: white;
+}
+p {
+  color: rgb(202, 199, 199);
+}
+
+.pay-button {
+  padding: 15px 40px;
+  border: 1px solid #4caf50;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  box-shadow: 0 0 10px white, 0 0 20px white;
+  border-radius: 8px;
+  margin: 20px;
+  background-color: #4caf50;
+  color: white;
+  float: ;
+}
+
 .product-card {
   display: flex;
   flex-direction: column;
-  border: 1px solid #ccc;
   border-radius: 8px;
   padding: 16px;
-  margin-bottom: 16px;
+  margin: 60px 10px 40px 10px;
+  color: white;
+  box-shadow: 0 0 2rem -0.5rem white;
 }
 
 .product-info {
@@ -193,5 +272,18 @@ export default {
 
 .product-options button:hover {
   background-color: #2e8b57;
+}
+
+.cart-message {
+  margin-top: 16px;
+  padding: 16px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+#seated-together {
+  vertical-align: top;
+  margin-top: 7px;
 }
 </style>
