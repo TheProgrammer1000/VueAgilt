@@ -1,5 +1,5 @@
 <script setup>
-import HeroSection from "../components/HeroSection.vue";
+import KeplerPage from "../components/KeplerPage.vue";
 </script>
 
 <script>
@@ -10,6 +10,6 @@ export default {
 
 <template>
   <main>
-    <HeroSection />
+    <KeplerPage />
   </main>
 </template>

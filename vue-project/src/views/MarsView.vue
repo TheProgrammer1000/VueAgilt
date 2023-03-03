@@ -1,5 +1,5 @@
 <script setup>
-import HeroSection from "../components/HeroSection.vue";
+import MarsPage from "../components/MarsPage.vue";
 </script>
 
 <script>
@@ -10,6 +10,6 @@ export default {
 
 <template>
   <main>
-    <HeroSection />
+    <MarsPage />
   </main>
 </template>

@@ -38,3 +38,7 @@ import ContactForm from "../components/ContactForm.vue";
     of humanity. Question is, are you? Space.. The final frontier. -->
   </main>
 </template>
+
+<style scoped>
+
+</style>

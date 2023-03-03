@@ -1,5 +1,5 @@
 <script setup>
-import HeroSection from "../components/HeroSection.vue";
+import MoonPage from "../components/MoonPage.vue";
 </script>
 
 <script>
@@ -10,6 +10,6 @@ export default {
 
 <template>
   <main>
-    <HeroSection />
+    <MoonPage />
   </main>
 </template>
