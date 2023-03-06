@@ -25,11 +25,15 @@
           </label>
         </li>
       </ul>
-      <button v-if="!callRichardUsed" @click="callRichard()">
-        Call Richard
-      </button>
-      <button v-if="!fiftyFiftyUsed" @click="fiftyFifty()">50/50</button>
-      <button @click="checkAnswer">Submit</button>
+      <button class="submit-btn" @click="checkAnswer">Submit</button>
+      <p>Lifelines:</p>
+      <div class="button-container">
+        <button class="lifeline-btn" v-if="!callRichardUsed" @click="callRichard()">
+          Call Richard
+        </button>
+        <button class="lifeline-btn" v-if="!fiftyFiftyUsed" @click="fiftyFifty()">50/50</button>
+
+      </div>
       <!--  :style... Changes the color so that Correct displays in green and Incorrect
       in red -->
       <div v-if="timerVisible">Time remaining: {{ time }}</div>
@@ -285,6 +289,22 @@ button {
   border-radius: 8px;
   padding: 12px 24px;
   text-align: center;
+}
+
+.submit-btn {
+margin: 0 0 30px 0;
+}
+
+.lifeline-btn {
+
+}
+
+.button-container {
+  display: flex;
+  width: 400px;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
 }
 
 button:hover {
