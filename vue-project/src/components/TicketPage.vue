@@ -175,8 +175,7 @@ p {
   margin: 20px;
   background-color: #4caf50;
   color: white;
-  float: ;
-}
+  }
 
 .product-card {
   display: flex;
