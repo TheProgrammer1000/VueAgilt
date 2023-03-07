@@ -170,12 +170,11 @@ p {
   font-weight: 400;
   cursor: pointer;
   transition: all 0.5s ease;
-  box-shadow: 0 0 10px white, 0 0 20px white;
   border-radius: 8px;
   margin: 20px;
   background-color: #4caf50;
   color: white;
-  }
+}
 
 .product-card {
   display: flex;

@@ -35,14 +35,17 @@ export default {
 /* styles omitted for brevity */
 </style>
 
-<style>
+<style scoped>
 .links {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  margin-top: 30px;
 }
 .header {
-  margin-bottom: 1rem;
+  margin-top: 10px;
+  color: white;
 }
 .button-container {
   display: flex;
@@ -53,18 +56,19 @@ export default {
   margin-bottom: 0.5rem;
 }
 .button {
-  background-color: #000;
+  border: white 1px solid;
+  background-color: transparent;
   color: #fff;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
   text-decoration: none;
+  box-shadow: 0 0 10px white, 0 0 20px white;
+  margin: 30px;
 }
 .button:hover {
-  background-color: #333;
+  box-shadow: 0 0 10px var(--steel-blue-clr), 0 0 20px var(--steel-blue-clr);
 }
 </style>
