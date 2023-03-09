@@ -106,12 +106,17 @@ nav {
   background-color: transparent;
 }
 
+.navbar {
+  --bs-navbar-toggler-focus-width: 0rem;
+}
+
 .navbar-toggler {
   background-color: white;
+  margin-right: 1.5rem;
 }
 
 .offcanvas-title {
-  color: var(--steel-blue-clr);
+  color: white;
 }
 
 .navbar-brand {
@@ -124,5 +129,9 @@ nav {
 
 .offcanvas-header {
   background-color: var(--dark-blue);
+}
+
+.btn-close {
+  background-color: white;
 }
 </style>
