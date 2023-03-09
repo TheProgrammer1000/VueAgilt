@@ -22,7 +22,9 @@ import { RouterLink, RouterView } from "vue-router";
         aria-labelledby="offcanvasNavbarLabel"
       >
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Prime Travels</h5>
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+            Prime Travels
+          </h5>
           <button
             type="button"
             class="btn-close"
@@ -55,11 +57,22 @@ import { RouterLink, RouterView } from "vue-router";
                 Planets
               </a>
               <ul class="dropdown-menu">
-                <li><RouterLink class="nav-link" to="/marspage">• Mars</RouterLink></li>
-                <li><RouterLink class="nav-link" to="/moonpage">• Moon</RouterLink></li>
-                <li><RouterLink class="nav-link" to="/keplerpage">• Kepler-22b</RouterLink></li>
                 <li>
+                  <RouterLink class="nav-link" to="/marspage"
+                    >• Mars</RouterLink
+                  >
                 </li>
+                <li>
+                  <RouterLink class="nav-link" to="/moonpage"
+                    >• Moon</RouterLink
+                  >
+                </li>
+                <li>
+                  <RouterLink class="nav-link" to="/keplerpage"
+                    >• Kepler-22b</RouterLink
+                  >
+                </li>
+                <li></li>
               </ul>
             </li>
             <!-- Bootstrap Navbar test end -->
@@ -72,12 +85,44 @@ import { RouterLink, RouterView } from "vue-router";
 </template>
 
 <style scoped>
+.dropdown-menu {
+  background-color: var(--dark-blue);
+  border-color: transparent;
+  margin-left: 20px;
+}
+.nav-item {
+  color: white;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+.nav-link:hover {
+  color: var(--light-blue-clr) !important;
+}
+
 nav {
-  background-color: white;
+  background-color: transparent;
 }
 
 .navbar-toggler {
-  display: flex;
-  align-items: center;
+  background-color: var(--steel-blue-clr);
+}
+
+.offcanvas-title {
+  color: var(--steel-blue-clr);
+}
+
+.navbar-brand {
+  color: white;
+}
+
+.offcanvas-body {
+  background-color: var(--dark-blue);
+}
+
+.offcanvas-header {
+  background-color: var(--dark-blue);
 }
 </style>
