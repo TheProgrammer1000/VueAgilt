@@ -287,6 +287,22 @@ button {
   text-align: center;
 }
 
+.submit-btn {
+margin: 0 0 30px 0;
+}
+
+/* .lifeline-btn {
+
+} */
+
+.button-container {
+  display: flex;
+  width: 400px;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+}
+
 button:hover {
   box-shadow: 0 0 10px #5281ad, 0 0 20px #5281ad;
   border: 1px solid #5281ad;
