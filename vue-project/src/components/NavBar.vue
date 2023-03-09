@@ -112,7 +112,6 @@ nav {
 
 .navbar-toggler {
   background-color: white;
-  margin-right: 0.5rem;
 }
 
 .offcanvas-title {
@@ -138,5 +137,6 @@ nav {
 .container-fluid {
   margin-top: 3.5rem;
   position: fixed;
+  width: 99.5%;
 }
 </style>

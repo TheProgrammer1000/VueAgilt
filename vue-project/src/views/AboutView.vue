@@ -6,9 +6,9 @@ import ContactForm from "../components/ContactForm.vue";
 
 <template>
   <main>
-    <NavBar/>
-    <AboutUsPage/>
-    <ContactForm/>
+    <NavBar />
+    <AboutUsPage />
+    <ContactForm />
   </main>
 </template>
 
