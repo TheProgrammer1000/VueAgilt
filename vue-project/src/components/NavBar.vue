@@ -35,11 +35,7 @@ import { RouterLink, RouterView } from "vue-router";
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <RouterLink class="nav-link active" aria-current="page" to="/"
-                >Home</RouterLink
-              >
-            </li>
-            <li class="nav-item">
+              <RouterLink class="nav-link" to="/landing">Home</RouterLink>
               <RouterLink class="nav-link" to="/about">About</RouterLink>
               <RouterLink class="nav-link" to="/ticketpage">Tickets</RouterLink>
             </li>
