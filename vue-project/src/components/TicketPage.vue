@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="product-card">
-      <h1>Tickets for space</h1>
+      <h1>Buy your tickets here</h1>
       <div class="product-info">
         <h2>{{ product.name }}</h2>
         <p>{{ product.description }}</p>
@@ -9,7 +9,7 @@
       </div>
       <div class="product-options">
         <div class="option">
-          <label for="space">Space class</label>
+          <p>Choose your package</p>
           <select id="space" v-model="selectedOption">
             <option
               v-for="option in product.options"
@@ -55,10 +55,11 @@
         </li>
       </ul>
       <p id="cart-total">Total Price: ${{ cartTotal }}</p>
-      <button class="pay-button">Pay ${{ cartTotal }}</button>
+      <button class="pay-button" @click="pay()">Pay ${{ cartTotal }}</button>
     </div>
     <div class="order-confirmation">
-      <h2>Order Confirmation??</h2>
+      <h2>Order Confirmation<br><br></h2>
+      <p class="confirmation-message" v-if="showConfirmationMessage"><p class="check-mark">✅</p>Your order has been placed. <br>Thank you for your order!</p>
     </div>
   </div>
 </template>
@@ -75,7 +76,8 @@ export default {
     return {
       selectedOption: 0,
       quantity: 1,
-      cartItems: [], // add cartItems array to store products
+      cartItems: [],
+      showConfirmationMessage: false, // add showConfirmationMessage property
     };
   },
   computed: {
@@ -97,7 +99,7 @@ export default {
         seatedTogether: this.seatedTogether,
         quantity: this.quantity,
       };
-      this.cartItems.push(product); // add product to cartItems array
+      this.cartItems.push(product);
     },
     increment() {
       this.quantity++;
@@ -106,6 +108,9 @@ export default {
       if (this.quantity > 1) {
         this.quantity--;
       }
+    },
+    pay() {
+      this.showConfirmationMessage = true; // set showConfirmationMessage to true
     },
   },
 };
@@ -143,6 +148,7 @@ export default {
   box-shadow: 0 0 2rem -0.5rem white;
   padding: 15px;
   margin: 70px 10px 40px 10px;
+  text-align: center;
 }
 
 ul {
@@ -283,5 +289,14 @@ p {
 #seated-together {
   vertical-align: top;
   margin-top: 7px;
+}
+
+.confirmation-message {
+  color: var(--verify-green);
+  text-align: center;
+}
+
+.check-mark {
+  font-size: 40px;
 }
 </style>

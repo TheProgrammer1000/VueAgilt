@@ -14,7 +14,7 @@ export default {
     <section class="hero-container">
       <div class="hero">
         <div class="text">
-          <h1>SpaceX</h1>
+          <h1>Space, the final frontier.</h1>
         </div>
       </div>
     </section>
@@ -22,7 +22,7 @@ export default {
       <h1>About Us</h1>
       <article>
         <img class="moon-image" :src="imageSource" />
-        <h2>SpaceX</h2>
+        <h2>Prime Travels</h2>
         <p class="about-text">
           At x we strive to build a future for mankind where the possibility to
           see life outside of earth is a reality. We’ve all been there as kids

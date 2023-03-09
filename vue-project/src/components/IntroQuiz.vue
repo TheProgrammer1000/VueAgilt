@@ -294,9 +294,9 @@ button {
 margin: 0 0 30px 0;
 }
 
-.lifeline-btn {
+/* .lifeline-btn {
 
-}
+} */
 
 .button-container {
   display: flex;
