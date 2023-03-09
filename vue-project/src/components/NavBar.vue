@@ -107,7 +107,7 @@ nav {
 }
 
 .navbar-toggler {
-  background-color: var(--steel-blue-clr);
+  background-color: white;
 }
 
 .offcanvas-title {
