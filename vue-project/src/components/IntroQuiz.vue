@@ -25,11 +25,15 @@
           </label>
         </li>
       </ul>
-      <button v-if="!callRichardUsed" @click="callRichard()">
-        Call Richard
-      </button>
-      <button v-if="!fiftyFiftyUsed" @click="fiftyFifty()">50/50</button>
-      <button @click="checkAnswer">Submit</button>
+      <button class="submit-btn" @click="checkAnswer">Submit</button>
+      <p>Lifelines:</p>
+      <div class="button-container">
+        <button class="lifeline-btn" v-if="!callRichardUsed" @click="callRichard()">
+          Call Richard
+        </button>
+        <button class="lifeline-btn" v-if="!fiftyFiftyUsed" @click="fiftyFifty()">50/50</button>
+
+      </div>
       <!--  :style... Changes the color so that Correct displays in green and Incorrect
       in red -->
       <div v-if="timerVisible">Time remaining: {{ time }}</div>
@@ -180,6 +184,7 @@ export default {
           this.tries += 1;
           this.errorDisplay = true;
           this.callRichardUsed = false;
+          this.startTimer(); // Start the timer on the first question
         }
       } else {
         this.currentQuestion += 1;
@@ -188,6 +193,18 @@ export default {
           this.startTimer();
         }
       }
+    },
+    startTimer() {
+      this.timerRunning = true;
+      this.time = 15; // reset timer value
+      this.timerId = setInterval(() => {
+        if (this.time > 0) {
+          this.time--;
+        }
+        if (this.time === 0) {
+          this.checkAnswer();
+        }
+      }, 1000);
     },
 
     fiftyFifty() {
@@ -207,20 +224,6 @@ export default {
         //  Markerar att 50/50 knappen har blivit använd
         question.fiftyFiftyUsed = true;
       }
-    },
-
-    startTimer() {
-      this.timerRunning = true;
-      this.time = 15; // reset timer value
-      this.timerId = setInterval(() => {
-        if (this.time > 0) {
-          this.time--;
-        } else {
-          clearInterval(this.timerId);
-          this.timerRunning = false;
-          this.checkAnswer();
-        }
-      }, 1000);
     },
     callRichard() {
       if (!this.callRichardUsed) {
@@ -291,9 +294,9 @@ button {
 margin: 0 0 30px 0;
 }
 
-/* .lifeline-btn {
+.lifeline-btn {
 
-} */
+}
 
 .button-container {
   display: flex;
