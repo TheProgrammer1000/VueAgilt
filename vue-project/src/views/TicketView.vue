@@ -16,7 +16,6 @@ export default {
   data() {
     return {
       product: {
-        name: "Tickets",
         description: "Make a choice of tickets for your journey",
         options: [
           {

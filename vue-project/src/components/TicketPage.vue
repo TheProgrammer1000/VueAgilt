@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="product-card">
-      <h1>Tickets for space</h1>
+      <h1>Buy your tickets here</h1>
       <div class="product-info">
         <h2>{{ product.name }}</h2>
         <p>{{ product.description }}</p>
@@ -9,7 +9,7 @@
       </div>
       <div class="product-options">
         <div class="option">
-          <label for="space">Space class</label>
+          <p>Choose your package</p>
           <select id="space" v-model="selectedOption">
             <option
               v-for="option in product.options"
