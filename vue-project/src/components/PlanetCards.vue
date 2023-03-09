@@ -50,8 +50,8 @@ export default defineComponent({
         {
           title: "Kepler-22b",
           description:
-            "A confirmed exoplanet about 1,206 light-years from Earth in the constellation Lyra.",
-          imageUrl: "src/assets/PlanetPictures/Kepler-442b.jpeg",
+            "The super-Earth at 2.4 times the size of earth, that could be covered in a super ocean.",
+          imageUrl: "src/assets/PlanetPictures/Kepler-442b_2.jpeg",
           buttonLink1: "KeplerPage",
           buttonText1: "Read More",
           buttonLink2: "https://www.example.com/kepler-442b-tickets",
@@ -107,6 +107,7 @@ export default defineComponent({
   margin: 0;
   font-size: 24px;
   font-weight: bold;
+  text-align: center;
 }
 
 .card-text {
