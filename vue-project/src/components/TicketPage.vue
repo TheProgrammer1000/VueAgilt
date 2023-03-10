@@ -1,15 +1,7 @@
 <template>
-  <div class="all-container">
-    <div class="product-card" v-if="checkoutButton === true">
-      <div class="heading-container">
-        <h1>Buy your tickets here</h1>
-        <i
-          type="button"
-          @click="showCart"
-          class="fa fa-shopping-cart"
-          style="font-size: 36px"
-        ></i>
-      </div>
+  <div class="container">
+    <div class="product-card">
+      <h1>Buy your tickets here</h1>
       <div class="product-info">
         <h2>{{ product.name }}</h2>
         <p>{{ product.description }}</p>
@@ -34,7 +26,7 @@
           </select>
         </div>
         <div class="option">
-          <label for="seated-together">Seated together ($50 per person)</label>
+          <label for="seated-together">Seated together</label>
           <input
             type="checkbox"
             id="seated-together"
@@ -42,7 +34,7 @@
           />
         </div>
         <div class="option">
-          <label for="quantity"></label>
+          <label for="quantity">Quantity</label>
           <div class="quantity-controls">
             <button @click="decrement">-</button>
             <span>{{ quantity }}</span>
@@ -53,185 +45,21 @@
           <button @click="addToCart">Add to Cart</button>
         </div>
       </div>
-      <p>Total Amount: ${{ totalPrice }}</p>
+      <p>Total price: ${{ totalPrice }}</p>
     </div>
-    <div class="cart-div" v-if="cartButton === true" ref="cartDiv">
-      <div class="item-container" v-if="checkoutButton === true">
-        <h2>Cart</h2>
-        <ul>
-          <li v-for="(item, index) in cartItems" :key="index">
-            {{ item.package }} {{ item.name }} - ${{ item.price }}
-            <div class="cart-quantity-div">
-              <div id="quantity">
-                <button class="btn" @click="decreaseQuantity(index)">-</button>
-                <span class="cart-span">{{ item.quantity }}</span>
-                <button class="btn" @click="increaseQuantity(index)">+</button>
-              </div>
-              <button class="btn" id="bin-btn" @click="removeFromCart(index)">
-                <i class="fa fa-trash"></i>
-              </button>
-            </div>
-          </li>
-        </ul>
-        <hr />
-        <p id="cart-total">Total Cost: ${{ cartTotal }}</p>
-      </div>
-
-      <button
-        class="pay-button"
-        @click="showPaymentFormMethod"
-        v-if="checkoutButton"
-      >
-        Checkout
-      </button>
-      <div class="paymentform-container" v-if="showPaymentForm">
-        <div class="payment-form">
-          <div class="row">
-            <div class="col-75">
-              <div class="container">
-                <form action="/action_page.php">
-                  <div class="row">
-                    <div class="col-50">
-                      <h3>Billing Address</h3>
-                      <label for="fname"
-                        ><i class="fa fa-user"></i> Full Name</label
-                      >
-                      <input
-                        type="text"
-                        id="fname"
-                        name="firstname"
-                        placeholder="John M. Doe"
-                      />
-                      <label for="email"
-                        ><i class="fa fa-envelope"></i> Email</label
-                      >
-                      <input
-                        type="text"
-                        id="email"
-                        name="email"
-                        placeholder="john@example.com"
-                      />
-                      <label for="adr"
-                        ><i class="fa fa-address-card-o"></i> Address</label
-                      >
-                      <input
-                        type="text"
-                        id="adr"
-                        name="address"
-                        placeholder="542 W. 15th Street"
-                      />
-                      <label for="city"
-                        ><i class="fa fa-institution"></i> City</label
-                      >
-                      <input
-                        type="text"
-                        id="city"
-                        name="city"
-                        placeholder="New York"
-                      />
-
-                      <div class="row">
-                        <div class="col-50">
-                          <label for="state">State</label>
-                          <input
-                            type="text"
-                            id="state"
-                            name="state"
-                            placeholder="NY"
-                          />
-                        </div>
-                        <div class="col-50">
-                          <label for="zip">Zip</label>
-                          <input
-                            type="text"
-                            id="zip"
-                            name="zip"
-                            placeholder="10001"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-50">
-                      <h3>Payment</h3>
-                      <label for="fname">Accepted Cards</label>
-                      <div class="icon-container">
-                        <i class="fa fa-cc-visa" style="color: navy"></i>
-                        <i class="fa fa-cc-amex" style="color: blue"></i>
-                        <i class="fa fa-cc-mastercard" style="color: red"></i>
-                        <i class="fa fa-cc-discover" style="color: orange"></i>
-                      </div>
-                      <label for="cname">Name on Card</label>
-                      <input
-                        type="text"
-                        id="cname"
-                        name="cardname"
-                        placeholder="John More Doe"
-                      />
-                      <label for="ccnum">Credit card number</label>
-                      <input
-                        type="text"
-                        id="ccnum"
-                        name="cardnumber"
-                        placeholder="1111-2222-3333-4444"
-                      />
-                      <label for="expmonth">Exp Month</label>
-                      <input
-                        type="text"
-                        id="expmonth"
-                        name="expmonth"
-                        placeholder="September"
-                      />
-
-                      <div class="row">
-                        <div class="col-50">
-                          <label for="expyear">Exp Year</label>
-                          <input
-                            type="text"
-                            id="expyear"
-                            name="expyear"
-                            placeholder="2018"
-                          />
-                        </div>
-                        <div class="col-50">
-                          <label for="cvv">CVV</label>
-                          <input
-                            type="text"
-                            id="cvv"
-                            name="cvv"
-                            placeholder="352"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <label>
-                    <input type="checkbox" checked="checked" name="sameadr" />
-                    Shipping address same as billing
-                  </label>
-                  <button class="pay-button" @click="pay()">
-                    Pay ${{ cartTotal }}
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- <button class="pay-button" @click="pay()">Pay ${{ cartTotal }}</button> -->
-      </div>
+    <div class="cart-div">
+      <h2>Cart</h2>
+      <ul>
+        <li v-for="(item, index) in cartItems" :key="index">
+          {{ item.name }} x{{ item.quantity }} - ${{ item.price }}
+        </li>
+      </ul>
+      <p id="cart-total">Total Price: ${{ cartTotal }}</p>
+      <button class="pay-button" @click="pay()">Pay ${{ cartTotal }}</button>
     </div>
-    <div
-      class="order-confirmation"
-      ref="confirmation"
-      v-if="showConfirmationMessage"
-    >
-      <h2>Order Confirmation<br /><br /></h2>
-      <div class="confirmation-message" v-if="showConfirmationMessage">
-        <p class="check-mark">✅</p>
-        <p class="order-text">
-          Your order has been placed. <br />Thank you for your purchase!
-        </p>
-      </div>
+    <div class="order-confirmation">
+      <h2>Order Confirmation<br><br></h2>
+      <p class="confirmation-message" v-if="showConfirmationMessage"><p class="check-mark">✅</p>Your order has been placed. <br>Thank you for your order!</p>
     </div>
   </div>
 </template>
@@ -246,10 +74,6 @@ export default {
   },
   data() {
     return {
-      cartButton: false,
-      checkoutButton: true,
-      showPaymentForm: false,
-      seatedTogether: false,
       selectedOption: 0,
       quantity: 1,
       cartItems: [],
@@ -261,12 +85,7 @@ export default {
       return this.cartItems.reduce((total, item) => total + item.price, 0);
     },
     totalPrice() {
-      let price = this.selectedOption * this.quantity;
-      /* return this.selectedOption * this.quantity; */
-      if (this.seatedTogether) {
-        price += 50 * this.quantity;
-      }
-      return price;
+      return this.selectedOption * this.quantity;
     },
   },
   methods: {
@@ -279,10 +98,8 @@ export default {
         price: this.totalPrice,
         seatedTogether: this.seatedTogether,
         quantity: this.quantity,
-        package: selectedOption.package,
       };
       this.cartItems.push(product);
-      this.quantity = 1;
     },
     increment() {
       this.quantity++;
@@ -330,21 +147,13 @@ export default {
 </script>
 
 <style scoped>
-.heading-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.all-container {
-  height: 100vh;
-  background-color: var(--dark-blue);
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   flex-wrap: wrap;
-  gap: 0px;
+  gap: 50px;
   margin: 0 auto;
   padding-top: 40px;
 }
@@ -353,33 +162,29 @@ export default {
   display: flex;
   flex-direction: column;
   border-radius: 15px;
-  width: 75vw;
+  width: 410px;
+  height: 519px;
   box-shadow: 0 0 2rem -0.5rem white;
   padding: 15px;
-  margin: 60px 30px 30px 30px;
+  margin: 60px 10px 40px 10px;
 }
 
 .order-confirmation {
   display: flex;
   flex-direction: column;
   border-radius: 15px;
-  width: 75vw;
+  width: 410px;
   height: 518px;
   box-shadow: 0 0 2rem -0.5rem white;
   padding: 15px;
-  margin: 60px 30px 30px 30px;
+  margin: 70px 10px 40px 10px;
   text-align: center;
-  justify-content: center;
-  align-items: center;
 }
 
 ul {
-  display: flex;
-  flex-direction: column;
   padding: 0;
   margin: 0;
   color: white;
-  /* height: 300px; */
 }
 
 li {
@@ -387,18 +192,10 @@ li {
 }
 
 h2 {
-  overflow: hidden;
-  margin-bottom: 5px;
   color: white;
 }
-
 p {
   color: rgb(202, 199, 199);
-}
-
-#cart-total {
-  overflow: hidden;
-  margin-top: 10px;
 }
 
 .pay-button {
@@ -410,64 +207,19 @@ p {
   cursor: pointer;
   transition: all 0.5s ease;
   border-radius: 8px;
-  margin: 20px 0 20px 0;
+  margin: 20px;
   background-color: #4caf50;
   color: white;
-  overflow: hidden;
-  width: 100%;
-}
-
-.cart-quantity-div {
-  display: flex;
-  align-items: center;
-}
-
-#quantity {
-  overflow: hidden;
-  display: flex;
-  background-color: var(--steel-blue-clr);
-  border-radius: 8px;
-  height: 30px;
-  align-items: center;
-  justify-content: center;
-}
-
-.cart-span {
-  padding: 0 5px 0 5px;
-}
-.btn {
-  color: white;
-  font-size: 24px;
-}
-
-.btn:hover {
-  background-color: var(--light-blue-clr);
-}
-
-#bin-btn {
-  margin-top: 10px;
-  color: var(--steel-blue-clr);
-}
-
-#bin-btn:hover {
-  color: red;
-  background-color: transparent;
 }
 
 .product-card {
-  width: 75vw;
   display: flex;
   flex-direction: column;
-  border-radius: 15px;
+  border-radius: 8px;
   padding: 16px;
-  margin: 50px 30px 30px 30px;
+  margin: 60px 10px 40px 10px;
   color: white;
   box-shadow: 0 0 2rem -0.5rem white;
-}
-
-.fa-shopping-cart {
-  color: white;
-  cursor: pointer;
 }
 
 .product-info {
@@ -527,11 +279,12 @@ p {
 }
 
 .product-options .quantity-controls button {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
   padding: 8px;
-  border-radius: px;
-  background-color: var(--steel-blue-clr);
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
   cursor: pointer;
 }
 
@@ -568,7 +321,7 @@ p {
   margin-top: 7px;
 }
 
-.order-text {
+.confirmation-message {
   color: var(--verify-green);
   text-align: center;
 }
@@ -577,7 +330,7 @@ p {
   font-size: 40px;
 }
 
-/* Paymenform styling.-------------------------------------------------- */
+/* Payment form styling */
 .paymentform-container {
   border-radius: 15px;
   margin: 60px;
