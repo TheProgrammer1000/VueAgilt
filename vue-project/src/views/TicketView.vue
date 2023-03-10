@@ -22,21 +22,21 @@ export default {
             id: 1,
             name: "Mars",
             package: "Astronaut:",
-            price: "4999",
+            price: "5000",
             currency: "$",
           },
           {
             id: 2,
             name: "Moon",
             package: "Astronaut:",
-            price: "9999",
+            price: "10000",
             currency: "$",
           },
           {
             id: 3,
             name: "Kepler-22b",
             package: "Astronaut:",
-            price: "14999",
+            price: "15000",
             currency: "$",
           },
           { id: 4, space: "---------------" },
@@ -44,21 +44,21 @@ export default {
             id: 6,
             name: "Mars",
             package: "Astronaut Premium+:",
-            price: "24999",
+            price: "25000",
             currency: "$",
           },
           {
             id: 7,
             name: "Moon",
             package: "Astronaut Premium+:",
-            price: "29999",
+            price: "30000",
             currency: "$",
           },
           {
             id: 5,
             name: "Kepler-22b",
             package: "Astronaut Premium+:",
-            price: "19999",
+            price: "20000",
             currency: "$",
           },
           { id: 8, space: "---------------" },
@@ -66,21 +66,21 @@ export default {
             id: 9,
             name: "Mars",
             package: "Prime VIP:",
-            price: "3499",
+            price: "35000",
             currency: "$",
           },
           {
             id: 10,
             name: "Moon",
             package: "Prime VIP:",
-            price: "39999",
+            price: "40000",
             currency: "$",
           },
           {
             id: 11,
             name: "Kepler-22b",
             package: "Prime VIP:",
-            price: "44999",
+            price: "45000",
             currency: "$",
           },
         ],
@@ -93,4 +93,6 @@ export default {
 main {
   margin: 0;
   padding: 0;
+  background-color: var(--dark-blue);
+}
 </style>
