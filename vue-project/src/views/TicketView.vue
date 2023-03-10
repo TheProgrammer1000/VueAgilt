@@ -93,6 +93,5 @@ export default {
 main {
   margin: 0;
   padding: 0;
-  background-color: var(--dark-blue);
 }
 </style>
