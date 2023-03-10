@@ -257,12 +257,16 @@ export default {
     };
   },
   computed: {
+    //Calculates the total cost of the cartItems array then return the total cost. (Davidj)
     cartTotal() {
       return this.cartItems.reduce((total, item) => total + item.price, 0);
     },
+    /* calculates the total price for the choosen product depending on the
+    quantity of the product.
+    Also if the seated together checkbox is checked it multiplies the seated together price
+    with the quantity of tickets and adds to the total price   (DavidJ)*/
     totalPrice() {
       let price = this.selectedOption * this.quantity;
-      /* return this.selectedOption * this.quantity; */
       if (this.seatedTogether) {
         price += 50 * this.quantity;
       }
@@ -270,6 +274,7 @@ export default {
     },
   },
   methods: {
+    //add product and quantity of the product to cart (Davidj)
     addToCart() {
       const selectedOption = this.product.options.find(
         (option) => option.price === this.selectedOption
@@ -293,17 +298,22 @@ export default {
       }
     },
     pay() {
-      this.showConfirmationMessage = true; // set showConfirmationMessage to true
+      //when clicking on pay-button this sets the showConfirmationMessage to true so that the confirmation-div appears. (Davidj)
+      this.showConfirmationMessage = true;
+      //sets cartButton to false when pressing pay-button and then hides the cart. (Davidj)
       this.cartButton = false;
     },
+    //removes product from the cart list depending on what index the argument takes. (Davidj)
     removeFromCart(index) {
       this.cartItems.splice(index, 1);
     },
+    //Increases the quantity of the specific product in the cart, also updates the prices when the quantity increases. (Davidj)
     increaseQuantity(index) {
       this.cartItems[index].quantity++;
       this.cartItems[index].price +=
         this.cartItems[index].price / (this.cartItems[index].quantity - 1);
     },
+    //Decreases the quantity of the specific product in the cart, also updates the prices when the quantity decreases. (Davidj)
     decreaseQuantity(index) {
       if (this.cartItems[index].quantity > 1) {
         this.cartItems[index].quantity--;
@@ -313,12 +323,15 @@ export default {
         this.cartItems.splice(index, 1);
       }
     },
+    //When clicking checkoutbutton this method hides the checkout-button and shows the payment-form. (DavidJ)
     showPaymentFormMethod() {
       this.showPaymentForm = true;
       this.checkoutButton = false;
     },
+    //When clicking the shoppingcart icon this will show the shoppingcart-div. (Davidj)
     showCart() {
       this.cartButton = true;
+      //Scrolls down to shopping cart div. (Davidj)
       this.$nextTick(() => {
         this.$refs.cartDiv.scrollIntoView({ behavior: "smooth" });
       });

@@ -25,10 +25,15 @@
           finally be quiet, and see for themselves. Do you want to find out if
           there are other species out there? Do you want to believe? Do you want
           to see it with your own eyes? Time to find out..<br /><br />
-          
+
           Stay tuned.<br />
           <i>The truth is out there.</i>
         </p>
+        <div>
+          <router-link to="/ticketpage">
+            <button>Book Tickets</button>
+          </router-link>
+        </div>
       </div>
     </div>
   </main>
@@ -49,6 +54,7 @@
   width: 100%;
   height: 100%;
   z-index: -1;
+  display: flex;
 }
 
 .mars-styling {
@@ -61,5 +67,25 @@
   margin: auto;
   width: 640px;
   padding: 50px;
+}
+
+button {
+  padding: 15px 40px;
+  border: 1px solid white;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  box-shadow: 0 0 10px white, 0 0 20px white;
+  border-radius: 8px;
+  margin: 20px;
+  background-color: transparent;
+  color: white;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
 }
 </style>

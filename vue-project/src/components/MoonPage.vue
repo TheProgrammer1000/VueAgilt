@@ -25,6 +25,11 @@
           Have any questions? <br />Our team is here to help you 24/7 with great
           expertise!
         </p>
+        <div>
+          <router-link to="/ticketpage">
+            <button>Book Tickets</button>
+          </router-link>
+        </div>
       </div>
     </div>
   </main>
@@ -45,6 +50,7 @@
   width: 100%;
   height: 100%;
   z-index: -1;
+  display: flex;
 }
 
 .mars-styling {
@@ -57,5 +63,25 @@
   margin: auto;
   width: 640px;
   padding: 50px;
+}
+
+button {
+  padding: 15px 40px;
+  border: 1px solid white;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  box-shadow: 0 0 10px white, 0 0 20px white;
+  border-radius: 8px;
+  margin: 20px;
+  background-color: transparent;
+  color: white;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
 }
 </style>
