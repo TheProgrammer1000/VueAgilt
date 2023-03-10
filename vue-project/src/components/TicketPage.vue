@@ -111,6 +111,36 @@ export default {
     },
     pay() {
       this.showConfirmationMessage = true; // set showConfirmationMessage to true
+      this.cartButton = false;
+    },
+    removeFromCart(index) {
+      this.cartItems.splice(index, 1);
+    },
+    //increase quantity on item in li list and updates the new price
+    increaseQuantity(index) {
+      this.cartItems[index].quantity++;
+      this.cartItems[index].price +=
+        this.cartItems[index].price / (this.cartItems[index].quantity - 1);
+    },
+    //decreases quantity on item in li list and updates the new price
+    decreaseQuantity(index) {
+      if (this.cartItems[index].quantity > 1) {
+        this.cartItems[index].quantity--;
+        this.cartItems[index].price -=
+          this.cartItems[index].price / (this.cartItems[index].quantity + 1);
+      } else {
+        this.cartItems.splice(index, 1);
+      }
+    },
+    showPaymentFormMethod() {
+      this.showPaymentForm = true;
+      this.checkoutButton = false;
+    },
+    showCart() {
+      this.cartButton = true;
+      this.$nextTick(() => {
+        this.$refs.cartDiv.scrollIntoView({ behavior: "smooth" });
+      });
     },
   },
 };
@@ -300,4 +330,141 @@ p {
   font-size: 40px;
 }
 
+/* Payment form styling */
+.paymentform-container {
+  border-radius: 15px;
+  margin: 60px;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border-radius: 15px;
+  background-color: var(--steel-blue-clr);
+}
+
+input[type="text"] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  border-radius: 15px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn1 {
+  background-color: #04aa6d;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn1:hover {
+  background-color: #45a049;
+}
+
+a {
+  color: #2196f3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+  .paymentform-container {
+    margin: 0px;
+  }
+
+  .cart-div {
+    width: 100%;
+  }
+
+  .product-card {
+    width: 100%;
+  }
+
+  .order-confirmation {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .heading-container {
+    justify-content: flex-start;
+  }
+  h1 {
+    font-size: 24px;
+
+    width: 250px;
+  }
+}
+
+@media (max-width: 350px) {
+  .heading-container {
+    justify-content: flex-start;
+  }
+  h1 {
+    font-size: 24px;
+
+    width: 200px;
+  }
+}
 </style>
