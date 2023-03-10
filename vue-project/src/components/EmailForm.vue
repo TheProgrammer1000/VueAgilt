@@ -26,17 +26,13 @@ export default defineComponent({
   },
   methods: {
     submitForm() {
-      // Send email and any other data to backend or API endpoint
+        
       console.log("Submitting form with email:", this.email);
 
-      // Reset the email input field to empty after the button has been
-      // clicked
       this.email = "";
 
-      // Set the subscribed flag to true, to display the success message
       this.subscribed = true;
 
-      // Hide the success message after 3 seconds of display
       setTimeout(() => {
         this.subscribed = false;
       }, 3000);
