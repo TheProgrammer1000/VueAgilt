@@ -299,11 +299,13 @@ export default {
     removeFromCart(index) {
       this.cartItems.splice(index, 1);
     },
+    //increase quantity on item in li list and updates the new price
     increaseQuantity(index) {
       this.cartItems[index].quantity++;
       this.cartItems[index].price +=
         this.cartItems[index].price / (this.cartItems[index].quantity - 1);
     },
+    //decreases quantity on item in li list and updates the new price
     decreaseQuantity(index) {
       if (this.cartItems[index].quantity > 1) {
         this.cartItems[index].quantity--;
