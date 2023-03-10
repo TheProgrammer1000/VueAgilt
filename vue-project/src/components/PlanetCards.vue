@@ -34,7 +34,7 @@ export default defineComponent({
           imageUrl: "src/assets/PlanetPictures/Mars.jpeg",
           buttonLink1: "MarsPage",
           buttonText1: "Read More",
-          buttonLink2: "https://www.example.com/mars-tickets",
+          buttonLink2: "TicketPage",
           buttonText2: "Book Tickets",
         },
         {
@@ -44,7 +44,7 @@ export default defineComponent({
           imageUrl: "src/assets/PlanetPictures/Moon.jpeg",
           buttonLink1: "MoonPage",
           buttonText1: "Read More",
-          buttonLink2: "https://www.example.com/moon-tickets",
+          buttonLink2: "TicketPage",
           buttonText2: "Book Tickets",
         },
         {
@@ -54,7 +54,7 @@ export default defineComponent({
           imageUrl: "src/assets/PlanetPictures/Kepler-442b_2.jpeg",
           buttonLink1: "KeplerPage",
           buttonText1: "Read More",
-          buttonLink2: "https://www.example.com/kepler-442b-tickets",
+          buttonLink2: "TicketPage",// fixed button links to ticket page
           buttonText2: "Book Tickets",
         },
       ],
