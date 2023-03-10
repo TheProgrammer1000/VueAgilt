@@ -5,11 +5,11 @@
     </video>
     <div class="overlay"></div>
     <div class="hero-content">
-      <h1>SpaceX Spacetravel</h1>
+      <h1>Prime Travel</h1>
       <p>
         Finish our quiz to qualify for an interstellar journey.
       </p>
-      <div class="button" @click="toQuiz">Quiz</div>
+      <div class="button" @click="toQuiz">Begin</div>
     </div>
   </div>
 </template>
