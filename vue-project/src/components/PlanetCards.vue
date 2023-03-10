@@ -126,7 +126,7 @@ export default defineComponent({
 .card-button {
   display: inline-block;
   padding: 6px 12px;
-  background-color: #333;
+  background-color: #1a1a1a;
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
