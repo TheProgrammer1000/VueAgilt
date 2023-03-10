@@ -123,7 +123,7 @@ export default {
           ],
           answer: "-270 celsius",
         },
-        // More questions can be added here
+        // kan lägga till fler frågor här
       ],
       currentQuestion: 0,
       selectedOption: "",
@@ -177,14 +177,24 @@ export default {
           this.selectedOption = "";
           this.selectedOptions = [];
           this.score = 0;
-          this.fiftyFiftyUsed = false;
           this.time = 15;
           this.timerVisible = true;
           this.timerRunning = false;
           this.tries += 1;
           this.errorDisplay = true;
           this.callRichardUsed = false;
-          this.startTimer(); // Start the timer on the first question
+          this.startTimer(); // startar tiden på första frågan buggfix //done
+
+          //   resettaar 50/50 button om current question är använd så försvinner den //done
+          const currentQuestion = this.questions[this.currentQuestion];
+          if (
+            currentQuestion.fiftyFiftyUsed &&
+            currentQuestion.answer !== this.selectedOptions[i]
+          ) {
+            currentQuestion.options = currentQuestion.originalOptions;
+            currentQuestion.fiftyFiftyUsed = false;
+            this.fiftyFiftyUsed = false;
+          }
         }
       } else {
         this.currentQuestion += 1;
@@ -193,18 +203,6 @@ export default {
           this.startTimer();
         }
       }
-    },
-    startTimer() {
-      this.timerRunning = true;
-      this.time = 15; // reset timer value
-      this.timerId = setInterval(() => {
-        if (this.time > 0) {
-          this.time--;
-        }
-        if (this.time === 0) {
-          this.checkAnswer();
-        }
-      }, 1000);
     },
 
     fiftyFifty() {
@@ -224,6 +222,20 @@ export default {
         //  Markerar att 50/50 knappen har blivit använd
         question.fiftyFiftyUsed = true;
       }
+    },
+
+    startTimer() {
+      this.timerRunning = true;
+      this.time = 15; // reset timer value
+      this.timerId = setInterval(() => {
+        if (this.time > 0) {
+          this.time--;
+        } else {
+          clearInterval(this.timerId);
+          this.timerRunning = false;
+          this.checkAnswer();
+        }
+      }, 1000);
     },
     callRichard() {
       if (!this.callRichardUsed) {

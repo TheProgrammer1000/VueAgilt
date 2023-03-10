@@ -31,10 +31,6 @@ export default {
 };
 </script>
 
-<style>
-/* styles omitted for brevity */
-</style>
-
 <style scoped>
 .links {
   display: flex;
