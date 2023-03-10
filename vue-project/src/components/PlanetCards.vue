@@ -54,7 +54,7 @@ export default defineComponent({
           imageUrl: "src/assets/PlanetPictures/Kepler-442b_2.jpeg",
           buttonLink1: "KeplerPage",
           buttonText1: "Read More",
-          buttonLink2: "TicketPage",
+          buttonLink2: "TicketPage",// fixed button links to ticket page
           buttonText2: "Book Tickets",
         },
       ],
