@@ -117,16 +117,14 @@ input {
 
 .background {
   display: flex;
-  min-height: 45vh;
-  margin-top: 20px;
+  margin: 20px 0 20px 0;
 }
 
 .container {
   padding: 0 2rem;
   max-width: 80vw;
   overflow: hidden;
-  margin: 0 auto;
-  height: 55vh;
+  height: 100%;
 }
 
 p {
@@ -135,13 +133,12 @@ p {
 
 .screen {
   position: relative;
-  background: var(--grey-clr);
+  background: var(--dark-grey);
   border-radius: 15px;
-  margin-top: 30px;
+  margin: 30px 0 30px 0;
   /* box-shadow: 0 0 7px white, 0 0 7px white; */
-   box-shadow: 0 0 2rem -0.5rem white;
+  box-shadow: 0 0 2rem -0.5rem white;
 }
-
 
 .screen:after {
   content: "";
@@ -160,7 +157,7 @@ p {
   display: flex;
   align-items: center;
   padding: 10px 20px;
-  background: #4d4d4f;
+  background: var(--grey-clr);
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
@@ -179,7 +176,7 @@ p {
 }
 
 .screen-header-button.close {
-  background: var(--light-blue-clr);
+  background: var(--dark-blue);
 }
 
 .screen-header-button.maximize {
@@ -187,7 +184,7 @@ p {
 }
 
 .screen-header-button.minimize {
-  background: var(--dark-blue);
+  background: var(--light-blue-clr);
 }
 
 .screen-header-right {
