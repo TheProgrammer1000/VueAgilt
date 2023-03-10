@@ -334,6 +334,7 @@ export default {
   justify-content: space-between;
 }
 
+/* container */
 .all-container {
   height: 100vh;
   background-color: var(--dark-blue);
