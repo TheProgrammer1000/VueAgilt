@@ -575,7 +575,7 @@ p {
   font-size: 40px;
 }
 
-/* Paymenform styling-------------------------------------------------- */
+/* Paymenform styling.-------------------------------------------------- */
 .paymentform-container {
   border-radius: 15px;
   margin: 60px;
