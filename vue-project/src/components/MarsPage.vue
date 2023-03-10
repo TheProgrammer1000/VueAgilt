@@ -13,19 +13,25 @@
           some changes in mind. Our vision is to have a crime free society and a
           “no tolerance” mindset, which means that if you commit a crime, you
           will be deported back to Earth instantly after your trial.<br><br>
-          
+
           On Mars, our premium packages (limited amount) include your own apartment or
           house (first come first served). You will also be able to sign up for
           our transportation package which includes our first mass produced
           space car. How cool is that? But be sure to subscribe now before they
           run out!<br><br>
-          
+
           We are very excited that our plans within our company are
           moving forward with such haste. One can only imagine what the future
           for mankind is going to look like in twenty years. With Mars being our
           first “civilized” planet, we have much in store for you that you DON'T
           want to miss out on!
         </p>
+        <div>
+          <router-link to="/ticketpage">
+            <button>Book Tickets</button>
+          </router-link>
+        </div>
+
       </div>
     </div>
   </main>
@@ -46,7 +52,8 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-}
+  display: flex;
+  }
 
 .mars-styling {
   font-size: 16px;
@@ -58,5 +65,25 @@
   margin: auto;
   width: 640px;
   padding: 50px;
+}
+
+button {
+  padding: 15px 40px;
+  border: 1px solid white;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  box-shadow: 0 0 10px white, 0 0 20px white;
+  border-radius: 8px;
+  margin: 20px;
+  background-color: transparent;
+  color: white;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
 }
 </style>
