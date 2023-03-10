@@ -3,5 +3,18 @@
   margin: 0;
   box-sizing: border-box;
   overflow-x: hidden;
+}
+body {
   font-family: monospace;
+  font-size: 16px;
+  padding-right: 0 !important;
+}
+/* Color variables */
+:root {
+  --steel-blue-clr: #5281ad;
+  --light-blue-clr: #7ea4c3;
+  --grey-clr: #333;
+  --dark-blue: #0f1b2e;
+  --rich-black: #04070e;
+  --verify-green: #029c75;
 }

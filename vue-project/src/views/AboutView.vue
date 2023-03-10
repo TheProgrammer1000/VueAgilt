@@ -1,7 +1,17 @@
+<script setup>
+import NavBar from "../components/NavBar.vue";
+import AboutUsPage from "../components/AboutUsPage.vue";
+import ContactForm from "../components/ContactForm.vue";
+</script>
+
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <main>
+    <NavBar />
+    <AboutUsPage />
+    <ContactForm />
+  </main>
 </template>
 
-<style></style>
+<style scoped>
+
+</style>

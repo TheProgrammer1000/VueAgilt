@@ -1,6 +1,11 @@
 <template>
-    <IntroQuiz />
-  </template>
-  
-  <style></style>
-  
+  <IntroQuiz />
+</template>
+
+<script>
+export default {
+  created() {},
+};
+</script>
+
+<style></style>

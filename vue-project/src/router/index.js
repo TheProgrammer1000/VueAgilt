@@ -21,7 +21,52 @@ const router = createRouter({
     {
       path: "/quiz",
       name: "quiz",
-      component: IntroQuiz
+      component: IntroQuiz,
+    },
+    {
+      path: "/landing",
+      name: "landing",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../views/LandingPage.vue"),
+    },
+    {
+      path: "/banned",
+      name: "banned",
+      component: () => import("../views/BannedPage.vue"),
+    },
+    {
+      path: "/ticketpage",
+      name: "ticketpage",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../views/TicketView.vue"),
+    },
+    {
+      path: "/marspage",
+      name: "marspage",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../views/MarsView.vue"),
+    },
+    {
+      path: "/moonpage",
+      name: "moonpage",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../views/MoonView.vue"),
+    },
+    {
+      path: "/keplerpage",
+      name: "keplerpage",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../views/KeplerView.vue"),
     },
   ],
 });
