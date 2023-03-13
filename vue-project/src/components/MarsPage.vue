@@ -1,5 +1,9 @@
-<script setup></script>
+<script setup>
+import NavBar from "../components/NavBar.vue";
+</script>
+
 <template>
+<NavBar />
   <main>
     <div class="background">
       <div class="mars-position">
@@ -12,17 +16,17 @@
           moving forward is to build a society on Mars similar to Earth but with
           some changes in mind. Our vision is to have a crime free society and a
           “no tolerance” mindset, which means that if you commit a crime, you
-          will be deported back to Earth instantly after your trial.<br><br>
+          will be deported back to Earth instantly after your trial.<br /><br />
 
-          On Mars, our premium packages (limited amount) include your own apartment or
-          house (first come first served). You will also be able to sign up for
-          our transportation package which includes our first mass produced
-          space car. How cool is that? But be sure to subscribe now before they
-          run out!<br><br>
+          On Mars, our premium packages (limited amount) include your own
+          apartment or house (first come first served). You will also be able to
+          sign up for our transportation package which includes our first mass
+          produced space car. How cool is that? But be sure to subscribe now
+          before they run out!<br /><br />
 
-          We are very excited that our plans within our company are
-          moving forward with such haste. One can only imagine what the future
-          for mankind is going to look like in twenty years. With Mars being our
+          We are very excited that our plans within our company are moving
+          forward with such haste. One can only imagine what the future for
+          mankind is going to look like in twenty years. With Mars being our
           first “civilized” planet, we have much in store for you that you DON'T
           want to miss out on!
         </p>
@@ -31,7 +35,6 @@
             <button>Book Tickets</button>
           </router-link>
         </div>
-
       </div>
     </div>
   </main>
@@ -53,7 +56,7 @@
   height: 100%;
   z-index: -1;
   display: flex;
-  }
+}
 
 .mars-styling {
   font-size: 16px;
