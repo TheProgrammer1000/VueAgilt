@@ -27,7 +27,7 @@ import NavBar from "../components/NavBar.vue";
           We are very excited that our plans within our company are moving
           forward with such haste. One can only imagine what the future for
           mankind is going to look like in twenty years. With Mars being our
-          first “civilized” planet, we have much in store for you that you DON'T
+          first “civilized” planet, we have much in store for you that you DO NOT
           want to miss out on!
         </p>
         <div>

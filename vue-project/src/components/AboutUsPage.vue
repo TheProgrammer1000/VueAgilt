@@ -24,7 +24,7 @@ export default {
         <img class="moon-image" :src="imageSource" />
         <h2>Prime Travels</h2>
         <p class="about-text">
-          At x we strive to build a future for mankind where the possibility to
+          At Prime Travels we strive to build a future for mankind where the possibility to
           see life outside of earth is a reality. We’ve all been there as kids
           growing up, looking up in the sky towards the stars, wondering what
           might be out there. But it’s always been a fantasy rather than a
